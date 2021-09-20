@@ -36,16 +36,15 @@ function request($field = null)
 }// end request function
 
 
-function jsonResponse($messages , $status)
+function jsonResponse($values, $status = 200)
 {
-    header('Content-Type: application/json',true,$status);
-    foreach ($messages as $key => $message) {
-        echo json_encode([
-            "$key" => $message,
-            "status" => $status
-        ]);
+    header("Content-Type:application/json", true, $status);
+    $out = [];
+    foreach ($values as $key => $value) {
+        $out [][$key] = $value;
     }
-}// end jsonResponse function
+    echo json_encode($out);
+}
 
 
 function cache($name , $value ,$time)

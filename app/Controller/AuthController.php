@@ -41,7 +41,6 @@ class AuthController extends Controller
     public function login()
     {
         if ($this->check_csrf_token(request('_csrf'))) {
-
             $ruleSet = [
                 'username'=>'required|email|string',
                 'password' => 'required|min:6|max:10'
